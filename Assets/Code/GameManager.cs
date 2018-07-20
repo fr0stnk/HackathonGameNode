@@ -29,8 +29,6 @@ public class GameManager : MonoBehaviour
     {
         this.State = state;
         this.UIManager.OnGameStateChanged(state);
-
-        Debug.Log($"State changed to {state}");
     }
 }
 
