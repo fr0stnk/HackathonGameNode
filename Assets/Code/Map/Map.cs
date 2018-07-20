@@ -15,11 +15,16 @@ public class Map : MonoBehaviour
 
     public GameObject TilePrefab;
 
+    /// <summary>Parent of tile objects.</summary>
+    public Transform TileObjectsHolder;
+
     private readonly Coordinate StartPoint = new Coordinate(500,500);
 
 	// Use this for initialization
     private void Start ()
 	{
+	    //var gameManager = FindObjectOfType<GameManager>();
+
         this.Tiles = new List<Tile>();
 
         // Test TODO
@@ -52,6 +57,8 @@ public class Map : MonoBehaviour
             var tileType = (TileType)Random.Range(0, this.TileTypesToSprites.Count);
 
             GameObject obj = Instantiate(this.TilePrefab, new Vector3(coordinate.X, coordinate.Y), Quaternion.identity);
+
+            obj.transform.parent = this.TileObjectsHolder;
 
             var tile = obj.GetComponent<Tile>();
             tile.Coordinate = coordinate;
