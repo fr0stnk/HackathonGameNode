@@ -8,5 +8,5 @@ public class Building : MonoBehaviour
     public List<int> BuildTimes;
 
     /// <summary>Upgrade prices per level (level- index in the list).</summary>
-    public List<int> Prices;
+    public List<int> UpgradePrices;
 }
