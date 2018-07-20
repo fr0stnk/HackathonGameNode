@@ -8,6 +8,13 @@ public class UIManager : MonoBehaviour
     public Button CastleView;
     public Button MapView;
 
+    //==========Castle buttons
+    public Button BarracksButton;
+
+    public Button GoldMineButton;
+
+    //==========Map buttons
+
     public GameManager GameManager;
 
     /// <summary>Object that should be shown in castle view.</summary>
