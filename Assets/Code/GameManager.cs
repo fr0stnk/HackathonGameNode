@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     /// <remarks>Set in editor.</remarks>
     public Map Map;
 
+    public GameState State { get; private set; }
+
     // Use this for initialization
     private void Start ()
 	{
@@ -19,4 +21,16 @@ public class GameManager : MonoBehaviour
 	{
 
 	}
+
+    public void SetState(GameState state)
+    {
+        this.State = state;
+
+        Debug.Log($"State changed to {state}");
+    }
+}
+
+public enum GameState
+{
+    Custle, Map
 }
