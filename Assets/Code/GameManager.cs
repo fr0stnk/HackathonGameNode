@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -11,7 +12,8 @@ public class GameManager : MonoBehaviour
     private void Start ()
 	{
 	    Random.InitState(54);
-    }
+
+	}
 
 	// Update is called once per frame
     private void Update ()
