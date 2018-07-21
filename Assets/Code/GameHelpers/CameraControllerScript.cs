@@ -20,7 +20,7 @@ public class CameraControllerScript : MonoBehaviour
         _audioSource.clip = BackgroundMusic;
         _audioSource.volume = 0.7f;
         if (BackgroundMusic != null)
-            _audioSource.Play(10);
+            _audioSource.Play();
     }
 
     void Update ()
