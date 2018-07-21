@@ -36,8 +36,6 @@ public class GameState
         return state;
     }
 
-
-
     public void BuildUnits(int count)
     {
         // 1 unit = 1 gold
