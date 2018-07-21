@@ -17,6 +17,11 @@ public class Tile : MonoBehaviour
 	{
 
 	}
+
+    private void OnMouseDown()
+    {
+        Debug.Log("ClickedTile");
+    }
 }
 
 public enum TileType

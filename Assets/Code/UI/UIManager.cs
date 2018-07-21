@@ -47,7 +47,6 @@ public class UIManager : MonoBehaviour
     /// <summary>Object that should be shown in map view.</summary>
     public List<GameObject> MapViewObjects;
 
-
     public void UpdateUI()
     {
         GameState gameState = this.GameManager.GameState;
@@ -105,7 +104,14 @@ public class UIManager : MonoBehaviour
             this.BuildingUnitsText.text = "Training " + gameState.UnitsBuildJob.UnitsLeftToBuild + " Units";
         }
 
-        //TODO AttacksText
+        if (gameState.CurrentAttack == null)
+        {
+            this.AttacksText.text = "You are not attacking anyone";
+        }
+        else
+        {
+            this.AttacksText.text = "TODO";
+        }
     }
 
     // Use this for initialization

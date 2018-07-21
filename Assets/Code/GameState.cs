@@ -18,6 +18,8 @@ public class GameState
 
     public UnitsBuildJob UnitsBuildJob;
 
+    public Attack CurrentAttack;
+
     private GoldMine goldMine = new GoldMine();
     private Barracks barracks = new Barracks();
 
@@ -160,5 +162,11 @@ public class GameState
                 this.UnitsCount += maxCreated;
             }
         }
+    }
+
+    public class Attack
+    {
+        public Coordinate AttackingWho;
+        public int HowManyUnits;
     }
 }

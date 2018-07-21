@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour
 
         this.SetState(CurrentGameScreen.Custle);
 
-        //TODO
 	    this.GameState = GameState.InitDefault(this.CurrentBlock);
 	}
 
