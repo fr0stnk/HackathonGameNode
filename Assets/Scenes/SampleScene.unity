@@ -693,6 +693,9 @@ MonoBehaviour:
   UpgradeGoldMineButton: {fileID: 734203957}
   GoldMineUpgradeInfo: {fileID: 2039820157}
   BarracksUpgradeInfo: {fileID: 627493099}
+  DisabledDuringUpgrade:
+  - {fileID: 1484542027}
+  - {fileID: 734203955}
   GoldCountText: {fileID: 336604544}
   UnitsCountText: {fileID: 1331381927}
   UpgradesText: {fileID: 707727906}
@@ -2514,7 +2517,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6824792, y: 0.238}
   m_AnchorMax: {x: 0.76600003, y: 0.33188888}
-  m_AnchoredPosition: {x: 408.11526, y: -210.75641}
+  m_AnchoredPosition: {x: 408.11542, y: -210.75641}
   m_SizeDelta: {x: 152.0079, y: 92.01111}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1467887220

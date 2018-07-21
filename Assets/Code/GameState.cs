@@ -14,10 +14,8 @@ public class GameState
 
     public int UnitsCount;
 
-    //TODO
     public BuildingUpgradeJob CurrentUpgradeJob;
 
-    //TODO
     public UnitsBuildJob UnitsBuildJob;
 
     private GoldMine goldMine = new GoldMine();
@@ -36,6 +34,7 @@ public class GameState
         return state;
     }
 
+    //TODO call
     public void BuildUnits(int count)
     {
         // 1 unit = 1 gold
@@ -73,7 +72,10 @@ public class GameState
         }
 
         if (this.CurrentUpgradeJob != null)
+        {
+            Debug.Log("Already building smth");
             return;
+        }
 
         Debug.Log("Upgrade started");
 
@@ -101,7 +103,7 @@ public class GameState
         var goldMineUpgradedBlocksAgo = 0;
 
         // Upgrades.
-        if (this.CurrentUpgradeJob != null && this.CurrentUpgradeJob.UpgradeFinishesByBlock >= this.CurrentBlockNumber)
+        if (this.CurrentUpgradeJob != null && this.CurrentBlockNumber >= this.CurrentUpgradeJob.UpgradeFinishesByBlock)
         {
             // Upgrade level.
             if (this.CurrentUpgradeJob.BuildingType == BuildingType.Barracks)

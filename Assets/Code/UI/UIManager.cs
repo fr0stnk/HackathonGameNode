@@ -19,6 +19,8 @@ public class UIManager : MonoBehaviour
 
     public Text GoldMineUpgradeInfo, BarracksUpgradeInfo;
 
+    public List<GameObject> DisabledDuringUpgrade;
+
     //====Labels
 
     public Text GoldCountText;
@@ -76,7 +78,33 @@ public class UIManager : MonoBehaviour
             this.GoldMineUpgradeInfo.text = "Price: " + cost + "  Time: " + time;
         }
 
-        //TODO AttacksText BuildingUnitsText UpgradesText
+        foreach (GameObject jb in this.DisabledDuringUpgrade)
+        {
+            jb.SetActive(gameState.CurrentUpgradeJob == null);
+        }
+
+        if (gameState.CurrentUpgradeJob == null)
+        {
+            this.UpgradesText.text = " --- ";
+        }
+        else
+        {
+            this.UpgradesText.text = "Upgrading " + gameState.CurrentUpgradeJob.BuildingType + " to lv " +
+                                     gameState.CurrentUpgradeJob.LevelAfterUpgrade + ". Rdy in " +
+                                     (gameState.CurrentUpgradeJob.UpgradeFinishesByBlock - gameState.CurrentBlockNumber) + " blocks.";
+        }
+
+        if (gameState.UnitsBuildJob == null)
+        {
+            this.BuildingUnitsText.text = " --- ";
+        }
+        else
+        {
+            // TODO DISPLAY
+            this.BuildingUnitsText.text = "Training N Units ";
+        }
+
+        //TODO AttacksText
     }
 
     // Use this for initialization
