@@ -27,7 +27,7 @@ public class Map : MonoBehaviour
 
         this.Tiles = new List<Tile>();
 
-        this.Add9TilesToMap();
+        //this.Add9TilesToMap();
     }
 
 	// Update is called once per frame
