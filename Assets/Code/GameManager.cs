@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
 	{
 	    Random.InitState(1);
 
+        this.SetState(CurrentGameScreen.Custle);
+
         //TODO
 	    this.GameState = GameState.InitDefault(100);
 	}
