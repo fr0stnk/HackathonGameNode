@@ -2282,7 +2282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb6363c43fa6cac4b9bf42dc8f5367e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnableCommitments: 1
+  EnableCommitments: 0
   Map: {fileID: 887456856}
   UIManager: {fileID: 390293069}
 --- !u!4 &887456858
@@ -3144,7 +3144,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6824792, y: 0.238}
   m_AnchorMax: {x: 0.76600003, y: 0.33188888}
-  m_AnchoredPosition: {x: 408.11633, y: -210.75641}
+  m_AnchoredPosition: {x: 408.1164, y: -210.75641}
   m_SizeDelta: {x: 152.0079, y: 92.01111}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1467887220

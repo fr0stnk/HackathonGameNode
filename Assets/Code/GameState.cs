@@ -30,7 +30,7 @@ public class GameState
             CurrentBlockNumber = blockNumber,
             GoldMineLevel = 0,
             BarracksLevel = 0,
-            GoldCount = 20
+            GoldCount = 120
         };
 
         return state;
