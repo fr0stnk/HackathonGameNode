@@ -90,18 +90,18 @@ public class UIManager : MonoBehaviour
 
         if (gameState.CurrentUpgradeJob == null)
         {
-            this.UpgradesText.text = " --- ";
+            this.UpgradesText.text = "--You are not upgrading anything--";
         }
         else
         {
-            this.UpgradesText.text = "Upgrading " + gameState.CurrentUpgradeJob.BuildingType + " to lv " +
-                                     gameState.CurrentUpgradeJob.LevelAfterUpgrade + ". Rdy in " +
+            this.UpgradesText.text = "Upgrading " + gameState.CurrentUpgradeJob.BuildingType + " to level " +
+                                     gameState.CurrentUpgradeJob.LevelAfterUpgrade + ". Finished in " +
                                      (gameState.CurrentUpgradeJob.UpgradeFinishesByBlock - gameState.CurrentBlockNumber) + " blocks";
         }
 
         if (gameState.UnitsBuildJob == null)
         {
-            this.BuildingUnitsText.text = " --- ";
+            this.BuildingUnitsText.text = "--No units are training--";
         }
         else
         {
@@ -110,7 +110,7 @@ public class UIManager : MonoBehaviour
 
         if (gameState.CurrentAttack == null)
         {
-            this.AttacksText.text = "You are not attacking anyone";
+            this.AttacksText.text = "--You are not attacking anyone--";
         }
         else
         {
