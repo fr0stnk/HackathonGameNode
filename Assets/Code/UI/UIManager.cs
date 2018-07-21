@@ -125,11 +125,13 @@ public class UIManager : MonoBehaviour
 
         this.CastleView.onClick.AddListener(() =>
 		{
+            AudioPlayer.Instance.PlayButtonClick();
 		    this.GameManager.SetState(CurrentGameScreen.Custle);
         });
 
         this.MapView.onClick.AddListener(() =>
         {
+            AudioPlayer.Instance.PlayButtonClick();
             this.GameManager.SetState(CurrentGameScreen.Map);
         });
 
