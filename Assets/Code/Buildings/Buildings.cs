@@ -36,7 +36,7 @@ public class GoldMine : Building
     }
 }
 
-public enum BuildingType
+public enum BuildingType : ushort
 {
     Barracks, GoldMine
 }

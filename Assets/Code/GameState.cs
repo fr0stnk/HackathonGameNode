@@ -59,6 +59,8 @@ public class GameState
             this.UnitsBuildJob = new UnitsBuildJob() {UnitsLeftToBuild = 0, UnitsPerBlockBuildTime = this.barracks.UnitsProductionSpeedPerBlock[this.BarracksLevel] };
 
         this.UnitsBuildJob.UnitsLeftToBuild += count;
+
+        Object.FindObjectOfType<GameManager>().Commitments.CommitUnitsTrainAction((ushort)count);
     }
 
     public void GetUpgradePriceAndTime(BuildingType buildingType, out int cost, out int time, out int nextLevel)
@@ -97,6 +99,8 @@ public class GameState
             LevelAfterUpgrade = nextLevel,
             UpgradeFinishesByBlock = this.CurrentBlockNumber + time
         };
+
+        Object.FindObjectOfType<GameManager>().Commitments.CommitBuildingUpgradeAction(buildingType);
 
         this.GoldCount -= cost;
     }
