@@ -21,6 +21,9 @@ public class API : MonoBehaviour
 
     public void SignAndSendCommitment(string commitmentHext)
     {
+        if (!GameManager.Instance.EnableCommitments)
+            return;
+
         this.StartCoroutine(this.Enumerator_SignAndSendCommitment(commitmentHext));
     }
 

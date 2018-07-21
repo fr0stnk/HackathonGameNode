@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+
+    public bool EnableCommitments = false;
+
     /// <remarks>Set in editor.</remarks>
     public Map Map;
 
@@ -23,6 +27,8 @@ public class GameManager : MonoBehaviour
     private void Start ()
 	{
 	    Random.InitState(1);
+
+	    Instance = this;
 
 	    this.cachedCamPosition = Camera.main.transform.position;
         this.Commitments = new Commitments();
