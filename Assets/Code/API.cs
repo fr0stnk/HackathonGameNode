@@ -31,7 +31,7 @@ public class API : MonoBehaviour
     {
         string signedCommitment = this.Sign(commitmentHext);
 
-        //UIManager.Instance.DebugText.text = "Commitment signed! " + signedCommitment;
+        UIManager.Instance.DebugText.text = "Commitment signed! " + signedCommitment;
 
         Debug.Log("Commitment signed!");
 
@@ -92,6 +92,7 @@ public class API : MonoBehaviour
         catch (Exception e)
         {
             Debug.LogError("Commitment NOT signed! " + e.ToString());
+            UIManager.Instance.DebugText.text = "Commitment NOT signed! " + e.ToString();
         }
 
         string signedData = responseFromServer;
