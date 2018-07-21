@@ -36,6 +36,19 @@ public class GameState
         return state;
     }
 
+    public void BuildUnits(int count)
+    {
+        //TODO check count if not too big
+
+    }
+
+    public void UpgradeBuilding(BuildingType buildingType)
+    {
+        //TODO check count if not too big
+
+    }
+
+    //TODO call when we are aware about a new block mined
     /// <remarks>No reorgs expected.</remarks>
     public void UpdateState(int newBlockNumber)
     {
