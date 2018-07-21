@@ -48,8 +48,6 @@ public class GameState
             this.UnitsBuildJob = new UnitsBuildJob() {UnitsLeftToBuild = 0, UnitsPerBlockBuildTime = this.barracks.UnitsProductionSpeedPerBlock[this.BarracksLevel] };
 
         this.UnitsBuildJob.UnitsLeftToBuild += count;
-
-        //TODO update UI
     }
 
     public void UpgradeBuilding(BuildingType buildingType)

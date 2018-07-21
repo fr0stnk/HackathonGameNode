@@ -26,11 +26,22 @@ public class GameManager : MonoBehaviour
 	    this.GameState = GameState.InitDefault(100);
 	}
 
+    private float UpdateUIInSeconds = 0;
+
 	// Update is called once per frame
     private void Update ()
-	{
+    {
+        this.UpdateUIInSeconds -= Time.deltaTime;
 
-	}
+        if (this.UpdateUIInSeconds <= 0)
+        {
+            this.UpdateUIInSeconds = 0.1f;
+
+            this.UIManager.UpdateUI();
+        }
+
+        //TODO imitate blocks being mined
+    }
 
     public void SetState(CurrentGameScreen screen)
     {

@@ -8,12 +8,26 @@ public class UIManager : MonoBehaviour
     public Button CastleView;
     public Button MapView;
 
-    //==========Castle buttons
+    //==========Castle
     public Button BarracksButton;
 
     public Button GoldMineButton;
 
-    //==========Map buttons
+    //====Labels
+
+    public Text GoldCountText;
+    public Text UnitsCountText;
+
+    public Text UpgradesText;
+
+    public Text BuildingUnitsText;
+
+    public Text AttacksText;
+
+    public Text GoldMineLevelText;
+    public Text BarracksLevelText;
+
+    //==========Map
 
     public GameManager GameManager;
 
@@ -22,6 +36,22 @@ public class UIManager : MonoBehaviour
 
     /// <summary>Object that should be shown in map view.</summary>
     public List<GameObject> MapViewObjects;
+
+
+    public void UpdateUI()
+    {
+        GameState gameState = this.GameManager.GameState;
+
+        //Castle view ===============
+
+        this.GoldCountText.text = gameState.GoldCount.ToString();
+        this.UnitsCountText.text = gameState.UnitsCount.ToString();
+
+        this.GoldMineLevelText.text = gameState.GoldMineLevel.ToString();
+        this.BarracksLevelText.text = gameState.BarracksLevel.ToString();
+
+        //TODO AttacksText BuildingUnitsText UpgradesText
+    }
 
     // Use this for initialization
     public void Start ()
