@@ -8,6 +8,8 @@ public class UIManager : MonoBehaviour
     public Button CastleView;
     public Button MapView;
 
+    public Text CurrentBlockText;
+
     //==========Castle
     public Button BarracksButton;
 
@@ -41,6 +43,8 @@ public class UIManager : MonoBehaviour
     public void UpdateUI()
     {
         GameState gameState = this.GameManager.GameState;
+
+        this.CurrentBlockText.text = "Current Block: " +  gameState.CurrentBlockNumber.ToString();
 
         //Castle view ===============
 

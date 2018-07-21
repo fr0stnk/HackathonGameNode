@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameState
 {
-    public int CurrentBlockNumber;
+    public int CurrentBlockNumber { get; private set; }
 
     public int GoldMineLevel;
 
@@ -76,7 +76,7 @@ public class GameState
     /// <remarks>No reorgs expected.</remarks>
     public void UpdateState(int newBlockNumber)
     {
-        int blocksPassed = this.CurrentBlockNumber - newBlockNumber;
+        int blocksPassed = newBlockNumber - this.CurrentBlockNumber;
         if (blocksPassed <= 0)
             return;
 
