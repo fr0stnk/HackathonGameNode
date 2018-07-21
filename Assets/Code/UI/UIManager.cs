@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,15 +12,16 @@ public class UIManager : MonoBehaviour
     public Text CurrentBlockText;
 
     //==========Castle
-    public Button BarracksButton;
     public Button UpgradeBarracksButton;
 
-    public Button GoldMineButton;
     public Button UpgradeGoldMineButton;
 
     public Text GoldMineUpgradeInfo, BarracksUpgradeInfo;
 
     public List<GameObject> DisabledDuringUpgrade;
+
+    public Button TrainUnitsButton;
+    public InputField TrainUnitsInput;
 
     //====Labels
 
@@ -91,7 +93,7 @@ public class UIManager : MonoBehaviour
         {
             this.UpgradesText.text = "Upgrading " + gameState.CurrentUpgradeJob.BuildingType + " to lv " +
                                      gameState.CurrentUpgradeJob.LevelAfterUpgrade + ". Rdy in " +
-                                     (gameState.CurrentUpgradeJob.UpgradeFinishesByBlock - gameState.CurrentBlockNumber) + " blocks.";
+                                     (gameState.CurrentUpgradeJob.UpgradeFinishesByBlock - gameState.CurrentBlockNumber) + " blocks";
         }
 
         if (gameState.UnitsBuildJob == null)
@@ -100,8 +102,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            // TODO DISPLAY
-            this.BuildingUnitsText.text = "Training N Units ";
+            this.BuildingUnitsText.text = "Training " + gameState.UnitsBuildJob.UnitsLeftToBuild + " Units";
         }
 
         //TODO AttacksText
@@ -130,6 +131,15 @@ public class UIManager : MonoBehaviour
         this.UpgradeGoldMineButton.onClick.AddListener(() =>
         {
             this.GameManager.GameState.UpgradeBuilding(BuildingType.GoldMine);
+        });
+
+        // Train
+
+        this.TrainUnitsButton.onClick.AddListener(() =>
+        {
+            if (!String.IsNullOrEmpty(this.TrainUnitsInput.text))
+                this.GameManager.GameState.BuildUnits(int.Parse(this.TrainUnitsInput.text));
+            this.TrainUnitsInput.text = "";
         });
     }
 

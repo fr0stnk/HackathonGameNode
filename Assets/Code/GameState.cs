@@ -34,14 +34,24 @@ public class GameState
         return state;
     }
 
-    //TODO call
     public void BuildUnits(int count)
     {
-        // 1 unit = 1 gold
-        if (count > this.GoldCount)
-            return;
+        Debug.Log("Build units " + count);
 
-        this.GoldCount -= count;
+        if (count < 0)
+        {
+            Debug.Log("Number is low");
+            return;
+        }
+
+        // 1 unit = 5 gold
+        if (count * 5 > this.GoldCount)
+        {
+            Debug.Log("Not enough gold");
+            return;
+        }
+
+        this.GoldCount -= count * 5;
 
         if (this.UnitsBuildJob == null)
             this.UnitsBuildJob = new UnitsBuildJob() {UnitsLeftToBuild = 0, UnitsPerBlockBuildTime = this.barracks.UnitsProductionSpeedPerBlock[this.BarracksLevel] };
@@ -137,7 +147,7 @@ public class GameState
         {
             int maxCreated = this.UnitsBuildJob.UnitsPerBlockBuildTime * blocksPassed;
 
-            if (maxCreated > this.UnitsBuildJob.UnitsLeftToBuild)
+            if (maxCreated >= this.UnitsBuildJob.UnitsLeftToBuild)
             {
                 int unitsBuilt = this.UnitsBuildJob.UnitsLeftToBuild;
                 this.UnitsBuildJob = null;

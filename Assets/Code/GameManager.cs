@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
             this.CurrentBlock++;
             this.GameState.UpdateState(this.CurrentBlock);
 
-            Debug.Log("Block mined: " + this.CurrentBlock);
+            //Debug.Log("Block mined: " + this.CurrentBlock);
         }
     }
 
