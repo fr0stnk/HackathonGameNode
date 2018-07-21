@@ -28,19 +28,19 @@ public class UIManager : MonoBehaviour
     {
 		this.CastleView.onClick.AddListener(() =>
 		{
-		    this.GameManager.SetState(GameState.Custle);
+		    this.GameManager.SetState(CurrentGameScreen.Custle);
         });
 
         this.MapView.onClick.AddListener(() =>
         {
-            this.GameManager.SetState(GameState.Map);
+            this.GameManager.SetState(CurrentGameScreen.Map);
         });
     }
 
-    public void OnGameStateChanged(GameState state)
+    public void OnGameStateChanged(CurrentGameScreen screen)
     {
-        List<GameObject> toHide = state == GameState.Custle ? this.MapViewObjects : this.CastleViewObjects;
-        List<GameObject> toShow = state == GameState.Custle ? this.CastleViewObjects : this.MapViewObjects;
+        List<GameObject> toHide = screen == CurrentGameScreen.Custle ? this.MapViewObjects : this.CastleViewObjects;
+        List<GameObject> toShow = screen == CurrentGameScreen.Custle ? this.CastleViewObjects : this.MapViewObjects;
 
         this.HodeObjects(toHide);
         this.ShowObjects(toShow);

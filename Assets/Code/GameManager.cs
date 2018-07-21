@@ -11,12 +11,17 @@ public class GameManager : MonoBehaviour
     /// <remarks>Set in editor.</remarks>
     public UIManager UIManager;
 
-    public GameState State { get; private set; }
+    public CurrentGameScreen Screen { get; private set; }
+
+    public GameState GameState { get; private set; }
 
     // Use this for initialization
     private void Start ()
 	{
 	    Random.InitState(1);
+
+        //TODO
+	    this.GameState = GameState.InitDefault(100);
 	}
 
 	// Update is called once per frame
@@ -25,14 +30,14 @@ public class GameManager : MonoBehaviour
 
 	}
 
-    public void SetState(GameState state)
+    public void SetState(CurrentGameScreen screen)
     {
-        this.State = state;
-        this.UIManager.OnGameStateChanged(state);
+        this.Screen = screen;
+        this.UIManager.OnGameStateChanged(screen);
     }
 }
 
-public enum GameState
+public enum CurrentGameScreen
 {
     Custle, Map
 }

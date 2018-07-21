@@ -639,7 +639,7 @@ RectTransform:
   m_GameObject: {fileID: 558282212}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.27748966, y: 0.27748966, z: 0.27748966}
+  m_LocalScale: {x: 0.5486803, y: 0.5486803, z: 0.5486803}
   m_Children: []
   m_Father: {fileID: 2100004260}
   m_RootOrder: 0
@@ -670,7 +670,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 62
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -681,7 +681,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: You are attacking 123:123 in 3 blocks
+  m_Text: You are attacking (55:63) in 3 blocks
 --- !u!222 &558282215
 CanvasRenderer:
   m_ObjectHideFlags: 0
