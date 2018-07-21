@@ -4,3 +4,13 @@
 14:47:53.144160 version@stat F·[] S·0B[] Sc·[]
 14:47:53.147160 db@janitor F·2 G·0
 14:47:53.147160 db@open done T·3.0004ms
+=============== Jul 21, 2018 (MSK) ===============
+19:21:00.483784 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+19:21:00.483784 version@stat F·[] S·0B[] Sc·[]
+19:21:00.483784 db@open opening
+19:21:00.483784 journal@recovery F·1
+19:21:00.483784 journal@recovery recovering @1
+19:21:00.486784 memdb@flush created L0@2 N·20 S·1KiB "abc..y:1,v5":"val..y:5,v18"
+19:21:00.487785 version@stat F·[1] S·1KiB[1KiB] Sc·[0.25]
+19:21:00.491785 db@janitor F·3 G·0
+19:21:00.491785 db@open done T·8.0006ms

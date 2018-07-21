@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 public class Commitments
 {
@@ -19,7 +20,9 @@ public class Commitments
 
         byte[] commitment = this.GetCommitment(this.JoinArrays(commitmentTypeBytes, buildingTypeBytes));
 
-        //TODO send commitment bytes
+        string hex = ByteArrayToHexString(commitment);
+
+        API.Instance.SignAndSendCommitment(hex);
     }
 
     public void CommitUnitsTrainAction(ushort count)
@@ -29,7 +32,9 @@ public class Commitments
 
         byte[] commitment = this.GetCommitment(this.JoinArrays(commitmentTypeBytes, unitsCountBytes));
 
-        //TODO send commitment bytes
+        string hex = ByteArrayToHexString(commitment);
+
+        API.Instance.SignAndSendCommitment(hex);
     }
 
     private byte[] GetCommitment(byte[] data)
@@ -62,6 +67,22 @@ public class Commitments
         byte[] bytes = BitConverter.GetBytes(value);
         Array.Reverse(bytes);
 
+        return bytes;
+    }
+
+    public static string ByteArrayToHexString(byte[] ba)
+    {
+        StringBuilder hex = new StringBuilder(ba.Length * 2);
+        foreach (byte b in ba)
+            hex.AppendFormat("{0:x2}", b);
+        return hex.ToString();
+    }
+    public static byte[] HexStringToByteArray(String hex)
+    {
+        int NumberChars = hex.Length;
+        byte[] bytes = new byte[NumberChars / 2];
+        for (int i = 0; i < NumberChars; i += 2)
+            bytes[i / 2] = Convert.ToByte(hex.Substring(i, 2), 16);
         return bytes;
     }
 }

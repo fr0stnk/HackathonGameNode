@@ -6,10 +6,14 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager Instance;
+
     public Button CastleView;
     public Button MapView;
 
     public Text CurrentBlockText;
+
+    public Text DebugText;
 
     //==========Castle
     public Button UpgradeBarracksButton;
@@ -117,7 +121,9 @@ public class UIManager : MonoBehaviour
     // Use this for initialization
     public void Start ()
     {
-		this.CastleView.onClick.AddListener(() =>
+        Instance = this;
+
+        this.CastleView.onClick.AddListener(() =>
 		{
 		    this.GameManager.SetState(CurrentGameScreen.Custle);
         });
