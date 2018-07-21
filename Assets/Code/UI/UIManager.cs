@@ -110,7 +110,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            this.AttacksText.text = "TODO";
+            this.AttacksText.text = "DISPLAY STUFF HERE";
         }
     }
 

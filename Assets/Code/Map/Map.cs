@@ -27,7 +27,6 @@ public class Map : MonoBehaviour
 
         this.Tiles = new List<Tile>();
 
-        // Test TODO
         this.Add9TilesToMap();
     }
 
