@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class Building
 {
@@ -31,7 +30,7 @@ public class GoldMine : Building
 
     public GoldMine()
     {
-        this.GoldProductionSpeedPerBlock = new List<int>() { 10, 20, 40, 80, 200 };
+        this.GoldProductionSpeedPerBlock = new List<int>() { 50, 20, 40, 80, 200 }; //TODO change first val to 10
         this.BuildTimes = new List<int>() { 2, 4, 8, 16, 32 };
         this.UpgradePrices = new List<int>() { 50, 100, 200, 400, 800 };
     }

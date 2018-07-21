@@ -12,8 +12,12 @@ public class UIManager : MonoBehaviour
 
     //==========Castle
     public Button BarracksButton;
+    public Button UpgradeBarracksButton;
 
     public Button GoldMineButton;
+    public Button UpgradeGoldMineButton;
+
+    public Text GoldMineUpgradeInfo, BarracksUpgradeInfo;
 
     //====Labels
 
@@ -54,6 +58,24 @@ public class UIManager : MonoBehaviour
         this.GoldMineLevelText.text = gameState.GoldMineLevel.ToString();
         this.BarracksLevelText.text = gameState.BarracksLevel.ToString();
 
+        // Upgrade cost
+        {
+            int cost;
+            int time;
+            int nextLevel;
+            gameState.GetUpgradePriceAndTime(BuildingType.Barracks, out cost, out time, out nextLevel);
+
+            this.BarracksUpgradeInfo.text = "Price: " + cost + "  Time: " + time;
+        }
+        {
+            int cost;
+            int time;
+            int nextLevel;
+            gameState.GetUpgradePriceAndTime(BuildingType.GoldMine, out cost, out time, out nextLevel);
+
+            this.GoldMineUpgradeInfo.text = "Price: " + cost + "  Time: " + time;
+        }
+
         //TODO AttacksText BuildingUnitsText UpgradesText
     }
 
@@ -68,6 +90,18 @@ public class UIManager : MonoBehaviour
         this.MapView.onClick.AddListener(() =>
         {
             this.GameManager.SetState(CurrentGameScreen.Map);
+        });
+
+        // Upgrade
+
+        this.UpgradeBarracksButton.onClick.AddListener(() =>
+        {
+            this.GameManager.GameState.UpgradeBuilding(BuildingType.Barracks);
+        });
+
+        this.UpgradeGoldMineButton.onClick.AddListener(() =>
+        {
+            this.GameManager.GameState.UpgradeBuilding(BuildingType.GoldMine);
         });
     }
 
