@@ -23,15 +23,21 @@ public class GameManager : MonoBehaviour
         this.SetState(CurrentGameScreen.Custle);
 
         //TODO
-	    this.GameState = GameState.InitDefault(100);
+	    this.GameState = GameState.InitDefault(this.CurrentBlock);
 	}
 
     private float UpdateUIInSeconds = 0;
 
-	// Update is called once per frame
+    private float MineBlockInSeconds = 0;
+    private int CurrentBlock = 10;
+
+    private const int SecondsPerBlock = 5;
+
+    // Update is called once per frame
     private void Update ()
     {
         this.UpdateUIInSeconds -= Time.deltaTime;
+        this.MineBlockInSeconds -= Time.deltaTime;
 
         if (this.UpdateUIInSeconds <= 0)
         {
@@ -40,7 +46,15 @@ public class GameManager : MonoBehaviour
             this.UIManager.UpdateUI();
         }
 
-        //TODO imitate blocks being mined
+        if (this.MineBlockInSeconds <= 0)
+        {
+            this.MineBlockInSeconds = SecondsPerBlock;
+
+            this.CurrentBlock++;
+            this.GameState.UpdateState(this.CurrentBlock);
+
+            //Debug.Log("Block mined: " + this.CurrentBlock);
+        }
     }
 
     public void SetState(CurrentGameScreen screen)

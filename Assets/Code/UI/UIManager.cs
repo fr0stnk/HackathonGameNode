@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,10 +9,19 @@ public class UIManager : MonoBehaviour
     public Button CastleView;
     public Button MapView;
 
-    //==========Castle
-    public Button BarracksButton;
+    public Text CurrentBlockText;
 
-    public Button GoldMineButton;
+    //==========Castle
+    public Button UpgradeBarracksButton;
+
+    public Button UpgradeGoldMineButton;
+
+    public Text GoldMineUpgradeInfo, BarracksUpgradeInfo;
+
+    public List<GameObject> DisabledDuringUpgrade;
+
+    public Button TrainUnitsButton;
+    public InputField TrainUnitsInput;
 
     //====Labels
 
@@ -42,6 +52,8 @@ public class UIManager : MonoBehaviour
     {
         GameState gameState = this.GameManager.GameState;
 
+        this.CurrentBlockText.text = "Current Block: " +  gameState.CurrentBlockNumber.ToString();
+
         //Castle view ===============
 
         this.GoldCountText.text = gameState.GoldCount.ToString();
@@ -50,7 +62,50 @@ public class UIManager : MonoBehaviour
         this.GoldMineLevelText.text = gameState.GoldMineLevel.ToString();
         this.BarracksLevelText.text = gameState.BarracksLevel.ToString();
 
-        //TODO AttacksText BuildingUnitsText UpgradesText
+        // Upgrade cost
+        {
+            int cost;
+            int time;
+            int nextLevel;
+            gameState.GetUpgradePriceAndTime(BuildingType.Barracks, out cost, out time, out nextLevel);
+
+            this.BarracksUpgradeInfo.text = "Price: " + cost + "  Time: " + time;
+        }
+        {
+            int cost;
+            int time;
+            int nextLevel;
+            gameState.GetUpgradePriceAndTime(BuildingType.GoldMine, out cost, out time, out nextLevel);
+
+            this.GoldMineUpgradeInfo.text = "Price: " + cost + "  Time: " + time;
+        }
+
+        foreach (GameObject jb in this.DisabledDuringUpgrade)
+        {
+            jb.SetActive(gameState.CurrentUpgradeJob == null);
+        }
+
+        if (gameState.CurrentUpgradeJob == null)
+        {
+            this.UpgradesText.text = " --- ";
+        }
+        else
+        {
+            this.UpgradesText.text = "Upgrading " + gameState.CurrentUpgradeJob.BuildingType + " to lv " +
+                                     gameState.CurrentUpgradeJob.LevelAfterUpgrade + ". Rdy in " +
+                                     (gameState.CurrentUpgradeJob.UpgradeFinishesByBlock - gameState.CurrentBlockNumber) + " blocks";
+        }
+
+        if (gameState.UnitsBuildJob == null)
+        {
+            this.BuildingUnitsText.text = " --- ";
+        }
+        else
+        {
+            this.BuildingUnitsText.text = "Training " + gameState.UnitsBuildJob.UnitsLeftToBuild + " Units";
+        }
+
+        //TODO AttacksText
     }
 
     // Use this for initialization
@@ -64,6 +119,27 @@ public class UIManager : MonoBehaviour
         this.MapView.onClick.AddListener(() =>
         {
             this.GameManager.SetState(CurrentGameScreen.Map);
+        });
+
+        // Upgrade
+
+        this.UpgradeBarracksButton.onClick.AddListener(() =>
+        {
+            this.GameManager.GameState.UpgradeBuilding(BuildingType.Barracks);
+        });
+
+        this.UpgradeGoldMineButton.onClick.AddListener(() =>
+        {
+            this.GameManager.GameState.UpgradeBuilding(BuildingType.GoldMine);
+        });
+
+        // Train
+
+        this.TrainUnitsButton.onClick.AddListener(() =>
+        {
+            if (!String.IsNullOrEmpty(this.TrainUnitsInput.text))
+                this.GameManager.GameState.BuildUnits(int.Parse(this.TrainUnitsInput.text));
+            this.TrainUnitsInput.text = "";
         });
     }
 

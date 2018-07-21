@@ -1,0 +1,4 @@
+http://localhost:8087/api/address
+
+
+http://localhost:8087/api/balance?address=bd9b27fa7827dcb1406f5c83b98c02ba1417d52a6ccfbdf4ef952c2dc9162500
