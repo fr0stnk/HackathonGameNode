@@ -5,51 +5,36 @@ using UnityEngine;
 public class CameraControllerScript : MonoBehaviour
 {
     // Music for background
-    public AudioClip backgroundMusic;
+    public AudioClip BackgroundMusic;
     // Audio Source
-    private AudioSource audioSource;
-    // Camera Component
-    private Camera mainCamera;
+    private AudioSource _audioSource;
+    
     // Флаг возможности движения камеры
-    public bool doMovement = true;
+    public bool DoMovement = true;
     // Скорость перемещения камеры
-    public float panSpeed = 50f;
-    // Чувствительность границ камеры к перемещению
-    public float panBorderThickness = 20f;
-
+    public float DragSpeed = 10f;
+    
     void Start()
     {
-        mainCamera = Camera.main;
-        audioSource = mainCamera.gameObject.AddComponent<AudioSource>();
-        audioSource.clip = backgroundMusic;
-        audioSource.volume = 0.7f;
-        if (backgroundMusic != null)
-            audioSource.Play(10);
-
+        _audioSource = Camera.main.gameObject.AddComponent<AudioSource>();
+        _audioSource.clip = BackgroundMusic;
+        _audioSource.volume = 0.7f;
+        if (BackgroundMusic != null)
+            _audioSource.Play(10);
     }
 
     void Update ()
     {
-        if (!doMovement)
+        if (!DoMovement)
         {
             return;
         }
 
-        if (Input.GetMouseButton(0) && Input.mousePosition.y >= Screen.height - panBorderThickness)
+        float speed = DragSpeed * Time.deltaTime;
+
+        if (Input.GetMouseButton(0))
         {
-            mainCamera.transform.Translate(Vector3.up * panSpeed * Time.deltaTime, Space.World);
-        }
-        if (Input.GetMouseButton(0) && Input.mousePosition.y < panBorderThickness)
-        {
-            mainCamera.transform.Translate(Vector3.down * panSpeed * Time.deltaTime, Space.World);
-        }
-        if (Input.GetMouseButton(0) && Input.mousePosition.x >= Screen.width - panBorderThickness)
-        {
-            mainCamera.transform.Translate(Vector3.right * panSpeed * Time.deltaTime, Space.World);
-        }
-        if (Input.GetMouseButton(0) && Input.mousePosition.x < panBorderThickness)
-        {
-            mainCamera.transform.Translate(Vector3.left * panSpeed * Time.deltaTime, Space.World);
+            Camera.main.transform.position += new Vector3(Input.GetAxis("Mouse X") * speed, Input.GetAxis("Mouse Y") * speed, 0);
         }
     }
  }

@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
 
         Camera.main.transform.position = cachedCamPosition;
 
-        Object.FindObjectOfType<CameraControllerScript>().doMovement = screen == CurrentGameScreen.Map;
+        Object.FindObjectOfType<CameraControllerScript>().DoMovement = screen == CurrentGameScreen.Map;
     }
 }
 
