@@ -1,0 +1,12 @@
+
+log_level = "*:info"
+abci = "socket"
+proxy_app = "tcp://127.0.0.1:46658"
+[consensus]
+create_empty_blocks = false
+[p2p]
+addr_book_strict = false
+seeds=""
+laddr = "tcp://0.0.0.0:46656"
+[rpc]
+laddr = "tcp://127.0.0.1:46657"

@@ -1,0 +1,14 @@
+{
+  "validators" : [ {
+    "power" : 10,
+    "name" : "me",
+    "pub_key" : {
+      "type" : "ed25519",
+      "data" : "6ca9595aec8b06ad55968e877bba230b345044337c02506d8cdd655467fda920"
+    }
+  } ],
+  "distribution" : true,
+  "genesis_time" : "0001-01-01T00:00:00Z",
+  "chain_id" : "local",
+  "app_hash" : ""
+}
