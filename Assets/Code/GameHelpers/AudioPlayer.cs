@@ -8,6 +8,10 @@ public class AudioPlayer : MonoBehaviour
 
     public AudioClip ButtonClick;
 
+    public AudioClip Building;
+
+    public AudioClip TrainingUnits;
+
     public static AudioPlayer Instance;
 
     private void Start ()
@@ -18,5 +22,15 @@ public class AudioPlayer : MonoBehaviour
     public void PlayButtonClick()
     {
         this.Source.PlayOneShot(this.ButtonClick);
+    }
+
+    public void PlayBuilding()
+    {
+        this.Source.PlayOneShot(this.Building, 0.6f);
+    }
+
+    public void PlayTraining()
+    {
+        this.Source.PlayOneShot(this.TrainingUnits, 0.3f);
     }
 }

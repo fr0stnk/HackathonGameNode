@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Media;
 using UnityEngine;
 
 public class GameState
@@ -55,6 +56,8 @@ public class GameState
 
         this.GoldCount -= count * 5;
 
+        AudioPlayer.Instance.PlayTraining();
+
         if (this.UnitsBuildJob == null)
             this.UnitsBuildJob = new UnitsBuildJob() {UnitsLeftToBuild = 0, UnitsPerBlockBuildTime = this.barracks.UnitsProductionSpeedPerBlock[this.BarracksLevel] };
 
@@ -90,6 +93,8 @@ public class GameState
             Debug.Log("Already building smth");
             return;
         }
+
+        AudioPlayer.Instance.PlayBuilding();
 
         Debug.Log("Upgrade started");
 

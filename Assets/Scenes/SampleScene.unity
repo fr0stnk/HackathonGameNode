@@ -1034,6 +1034,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Source: {fileID: 255153484}
   ButtonClick: {fileID: 8300000, guid: 5e5d5e5c7c3e15a4aae448b8d373d67c, type: 3}
+  Building: {fileID: 8300000, guid: 1594e81e9ccde2e47ba8feb32d77900f, type: 3}
+  TrainingUnits: {fileID: 8300000, guid: 370a46b91182ef84eb8b19733d77716e, type: 3}
 --- !u!82 &255153484
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3846,7 +3848,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6824792, y: 0.238}
   m_AnchorMax: {x: 0.76600003, y: 0.33188888}
-  m_AnchoredPosition: {x: 408.11688, y: -194.52}
+  m_AnchoredPosition: {x: 408.11703, y: -194.52}
   m_SizeDelta: {x: 152, y: 106.77}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1467887220
