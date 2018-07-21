@@ -20,12 +20,12 @@ public class GameState
     //TODO
     public UnitsBuildJob UnitsBuildJob;
 
-    private GoldMine mine = new GoldMine();
+    private GoldMine goldMine = new GoldMine();
     private Barracks barracks = new Barracks();
 
     public static GameState InitDefault(int blockNumber)
     {
-        GameState state = new GameState()
+        var state = new GameState()
         {
             CurrentBlockNumber = blockNumber,
             GoldMineLevel = 0,
@@ -36,16 +36,44 @@ public class GameState
         return state;
     }
 
+
+
     public void BuildUnits(int count)
     {
-        //TODO check count if not too big
+        // 1 unit = 1 gold
+        if (count > this.GoldCount)
+            return;
 
+        this.GoldCount -= count;
+
+        if (this.UnitsBuildJob == null)
+            this.UnitsBuildJob = new UnitsBuildJob() {UnitsLeftToBuild = 0, UnitsPerBlockBuildTime = this.barracks.UnitsProductionSpeedPerBlock[this.BarracksLevel] };
+
+        this.UnitsBuildJob.UnitsLeftToBuild += count;
+
+        //TODO update UI
     }
 
     public void UpgradeBuilding(BuildingType buildingType)
     {
-        //TODO check count if not too big
+        int upgradeToLevel = buildingType == BuildingType.Barracks ? this.BarracksLevel + 1 : this.GoldMineLevel + 1;
+        int cost = buildingType == BuildingType.Barracks ? this.barracks.UpgradePrices[upgradeToLevel] : this.goldMine.UpgradePrices[upgradeToLevel];
+        int timeTillCompletion = buildingType == BuildingType.Barracks ? this.barracks.BuildTimes[upgradeToLevel] : this.goldMine.BuildTimes[upgradeToLevel];
 
+        if (cost > this.GoldCount)
+            return;
+
+        if (this.CurrentUpgradeJob != null)
+            return;
+
+        this.CurrentUpgradeJob = new BuildingUpgradeJob()
+        {
+            BuildingType = buildingType,
+            LevelAfterUpgrade = upgradeToLevel,
+            UpgradeFinishesByBlock = this.CurrentBlockNumber + timeTillCompletion
+        };
+
+        //TODO upd UI
     }
 
     //TODO call when we are aware about a new block mined
@@ -81,13 +109,13 @@ public class GameState
         // Update gold.
         if (!goldMineWasUpgraded)
         {
-            int goldMined = blocksPassed * this.mine.GoldProductionSpeedPerBlock[this.GoldMineLevel];
+            int goldMined = blocksPassed * this.goldMine.GoldProductionSpeedPerBlock[this.GoldMineLevel];
             this.GoldCount += goldMined;
         }
         else
         {
-            int goldMined = (blocksPassed - goldMineUpgradedBlocksAgo) * this.mine.GoldProductionSpeedPerBlock[this.GoldMineLevel - 1];
-            goldMined += goldMineUpgradedBlocksAgo * this.mine.GoldProductionSpeedPerBlock[this.GoldMineLevel];
+            int goldMined = (blocksPassed - goldMineUpgradedBlocksAgo) * this.goldMine.GoldProductionSpeedPerBlock[this.GoldMineLevel - 1];
+            goldMined += goldMineUpgradedBlocksAgo * this.goldMine.GoldProductionSpeedPerBlock[this.GoldMineLevel];
 
             this.GoldCount += goldMined;
         }
