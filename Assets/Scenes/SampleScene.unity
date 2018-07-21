@@ -2090,6 +2090,7 @@ GameObject:
   - component: {fileID: 887456858}
   - component: {fileID: 887456857}
   - component: {fileID: 887456856}
+  - component: {fileID: 887456859}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -2145,6 +2146,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &887456859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 887456855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbdc944d46029594eb8f276b8dfc721a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1085525969
 GameObject:
   m_ObjectHideFlags: 0
@@ -2978,7 +2990,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6824792, y: 0.238}
   m_AnchorMax: {x: 0.76600003, y: 0.33188888}
-  m_AnchoredPosition: {x: 408.11606, y: -210.75641}
+  m_AnchoredPosition: {x: 408.1162, y: -210.75641}
   m_SizeDelta: {x: 152.0079, y: 92.01111}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1467887220

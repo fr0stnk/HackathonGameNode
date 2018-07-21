@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
 
     public GameState GameState { get; private set; }
 
+    public Commitments Commitments { get; private set; }
+
     private Vector3 cachedCamPosition;
 
     // Use this for initialization
@@ -23,6 +25,7 @@ public class GameManager : MonoBehaviour
 	    Random.InitState(1);
 
 	    this.cachedCamPosition = Camera.main.transform.position;
+        this.Commitments = new Commitments();
 
         this.SetState(CurrentGameScreen.Custle);
 
