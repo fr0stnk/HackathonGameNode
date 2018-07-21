@@ -25,16 +25,11 @@ public class CameraControllerScript : MonoBehaviour
         audioSource.volume = 0.7f;
         if (backgroundMusic != null)
             audioSource.Play(10);
-        
+
     }
 
     void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            doMovement = !doMovement;
-        }
-
         if (!doMovement)
         {
             return;

@@ -15,10 +15,14 @@ public class GameManager : MonoBehaviour
 
     public GameState GameState { get; private set; }
 
+    private Vector3 cachedCamPosition;
+
     // Use this for initialization
     private void Start ()
 	{
 	    Random.InitState(1);
+
+	    this.cachedCamPosition = Camera.main.transform.position;
 
         this.SetState(CurrentGameScreen.Custle);
 
@@ -61,6 +65,10 @@ public class GameManager : MonoBehaviour
     {
         this.Screen = screen;
         this.UIManager.OnGameStateChanged(screen);
+
+        Camera.main.transform.position = cachedCamPosition;
+
+        Object.FindObjectOfType<CameraControllerScript>().doMovement = screen == CurrentGameScreen.Map;
     }
 }
 
