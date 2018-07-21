@@ -23,7 +23,7 @@ public class CameraControllerScript : MonoBehaviour
             _audioSource.Play();
     }
 
-    void Update ()
+    void LateUpdate ()
     {
         if (!DoMovement)
         {
