@@ -1448,7 +1448,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BackgroundMusic: {fileID: 8300000, guid: 58b3116d991c917499f09f9912880ec2, type: 3}
   DoMovement: 1
-  DragSpeed: 10
+  DragSpeed: 21
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -3144,7 +3144,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6824792, y: 0.238}
   m_AnchorMax: {x: 0.76600003, y: 0.33188888}
-  m_AnchoredPosition: {x: 408.1164, y: -210.75641}
+  m_AnchoredPosition: {x: 408.11642, y: -210.75641}
   m_SizeDelta: {x: 152.0079, y: 92.01111}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1467887220
